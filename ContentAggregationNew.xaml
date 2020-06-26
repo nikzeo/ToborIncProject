@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="ContentAggregationNew" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="863,10385" sap2010:WorkflowViewState.IdRef="ContentAggregationNew_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="ContentAggregationNew" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="627,1028" sap2010:WorkflowViewState.IdRef="ContentAggregationNew_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="23">
       <x:String>System.Activities</x:String>
@@ -27,7 +27,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="18">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="22">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -46,89 +46,86 @@
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ContentAggregationNew" sap:VirtualizedContainerService.HintSize="655,10220" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ContentAggregationNew" sap:VirtualizedContainerService.HintSize="476,761" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="OnThisDay" />
       <Variable x:TypeArguments="sd:DataTable" Name="CNNData" />
       <Variable x:TypeArguments="sd:DataTable" Name="EmpireData" />
-      <Variable x:TypeArguments="sd:DataTable" Name="OnThisDayFilm" />
-      <Variable x:TypeArguments="sd:DataTable" Name="IMDB" />
+      <Variable x:TypeArguments="sd:DataTable" Name="OnThisDayFilmData" />
+      <Variable x:TypeArguments="sd:DataTable" Name="IMDBData" />
       <Variable x:TypeArguments="sd:DataTable" Name="theVergeData" />
-      <Variable x:TypeArguments="sd:DataTable" Name="CCNTech" />
-      <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="NyTimes" />
+      <Variable x:TypeArguments="sd:DataTable" Name="CNNTech" />
       <Variable x:TypeArguments="sd:DataTable" Name="ExcelDatabase" />
       <Variable x:TypeArguments="x:String" Name="theVergePrint" />
       <Variable x:TypeArguments="x:String" Name="CNNTechPrint" />
-      <Variable x:TypeArguments="x:String" Name="NyTimesPrint" />
-      <Variable x:TypeArguments="x:String" Name="CNN" />
-      <Variable x:TypeArguments="sd:DataTable" Name="OnThisDayData" />
-      <Variable x:TypeArguments="x:String" Name="talkSport" />
-      <Variable x:TypeArguments="sd:DataTable" Name="nbcData" />
-      <Variable x:TypeArguments="x:String" Name="nbc" />
+      <Variable x:TypeArguments="x:String" Name="CNNSportOutput" />
+      <Variable x:TypeArguments="sd:DataTable" Name="OnThisDaySportData" />
+      <Variable x:TypeArguments="sd:DataTable" Name="NBCData" />
+      <Variable x:TypeArguments="x:String" Name="NBCOutput" />
       <Variable x:TypeArguments="sd:DataTable" Name="RedditTechData" />
-      <Variable x:TypeArguments="x:String" Name="RedditPrint" />
-      <Variable x:TypeArguments="x:String" Name="Empire" />
-      <Variable x:TypeArguments="x:String" Name="IMDBprint" />
-      <Variable x:TypeArguments="x:String" Name="OnThisDayFilmPrint" />
+      <Variable x:TypeArguments="x:String" Name="RedditOutput" />
+      <Variable x:TypeArguments="x:String" Name="EmpireOutput" />
+      <Variable x:TypeArguments="x:String" Name="IMDBOutput" />
+      <Variable x:TypeArguments="x:String" Name="OnThisDayFilmOutput" />
+      <Variable x:TypeArguments="ui:QueueItem" Name="transitem" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Sport" sap:VirtualizedContainerService.HintSize="613,2740" sap2010:WorkflowViewState.IdRef="Sequence_7">
+    <Sequence DisplayName="Sport" sap:VirtualizedContainerService.HintSize="434,66" sap2010:WorkflowViewState.IdRef="Sequence_7">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="552,692" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="https://www.onthisday.com/sport/">
+      <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="552,600" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="https://www.onthisday.com/sport/">
         <ui:OpenBrowser.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="518,590" sap2010:WorkflowViewState.IdRef="Sequence_6">
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,498" sap2010:WorkflowViewState.IdRef="Sequence_6">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence DisplayName="Data Scraping" sap:VirtualizedContainerService.HintSize="476,436" sap2010:WorkflowViewState.IdRef="Sequence_9">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'OnThisDay Page'" sap:VirtualizedContainerService.HintSize="434,344" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="baed1c0918b532b0ada8e580d03896c6" Selector="&lt;html app='chrome.exe' title='On This Day in Sports History' /&gt;">
-                  <ui:BrowserScope.Body>
-                    <ActivityAction x:TypeArguments="x:Object">
-                      <ActivityAction.Argument>
-                        <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                      </ActivityAction.Argument>
-                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,198" sap2010:WorkflowViewState.IdRef="Sequence_8">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[OnThisDayData]" DisplayName="Extract Structured Data 'MAIN'" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='1:' attr='text'&gt;&lt;webctrl tag='div' class='section no-padding-top no-padding-bottom' idx='1'/&gt;&lt;webctrl tag='div' class='wrapper' idx='1'/&gt;&lt;webctrl tag='ul' class='event-list event-list--with-advert' idx='2'/&gt;&lt;webctrl tag='li' class='event'/&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ExtractData_2" MaxNumberOfResults="2" SimulateClick="True">
-                          <ui:ExtractData.Target>
-                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8dd5e309-a62a-4429-b6f5-60d81390f584" InformativeScreenshot="336e454b19331da2284ea578f190b5b7" Selector="&lt;webctrl tag='MAIN' /&gt;" WaitForReady="COMPLETE">
-                              <ui:Target.TimeoutMS>
-                                <InArgument x:TypeArguments="x:Int32" />
-                              </ui:Target.TimeoutMS>
-                            </ui:Target>
-                          </ui:ExtractData.Target>
-                        </ui:ExtractData>
-                      </Sequence>
-                    </ActivityAction>
-                  </ui:BrowserScope.Body>
-                </ui:BrowserScope>
-              </Sequence>
-              <ui:CloseTab Browser="{x:Null}" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="476,22" sap2010:WorkflowViewState.IdRef="CloseTab_1" />
+              <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'OnThisDay Page'" sap:VirtualizedContainerService.HintSize="434,344" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="baed1c0918b532b0ada8e580d03896c6" Selector="&lt;html app='chrome.exe' title='On This Day in Sports History' /&gt;">
+                <ui:BrowserScope.Body>
+                  <ActivityAction x:TypeArguments="x:Object">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,198" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[OnThisDaySportData]" DisplayName="Extract Structured Data 'MAIN'" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='1:' attr='text'&gt;&lt;webctrl tag='div' class='section no-padding-top no-padding-bottom' idx='1'/&gt;&lt;webctrl tag='div' class='wrapper' idx='1'/&gt;&lt;webctrl tag='ul' class='event-list event-list--with-advert' idx='2'/&gt;&lt;webctrl tag='li' class='event'/&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ExtractData_16" MaxNumberOfResults="2" SimulateClick="True">
+                        <ui:ExtractData.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="be596c9e-8211-406d-8eed-adce12f8b906" InformativeScreenshot="8adb8ef0acb253cda89248732a58b18e" Selector="&lt;webctrl tag='MAIN' /&gt;" WaitForReady="COMPLETE">
+                            <ui:Target.TimeoutMS>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:Target.TimeoutMS>
+                          </ui:Target>
+                        </ui:ExtractData.Target>
+                      </ui:ExtractData>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:BrowserScope.Body>
+              </ui:BrowserScope>
+              <ui:CloseTab Browser="{x:Null}" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="434,22" sap2010:WorkflowViewState.IdRef="CloseTab_1" />
             </Sequence>
           </ActivityAction>
         </ui:OpenBrowser.Body>
@@ -138,54 +135,44 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:OpenBrowser>
-      <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="552,692" sap2010:WorkflowViewState.IdRef="OpenBrowser_2" Url="https://www.nbcnews.com/news/sports/">
+      <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="552,600" sap2010:WorkflowViewState.IdRef="OpenBrowser_2" Url="https://www.nbcnews.com/news/sports/">
         <ui:OpenBrowser.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="518,590" sap2010:WorkflowViewState.IdRef="Sequence_12">
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,498" sap2010:WorkflowViewState.IdRef="Sequence_12">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence DisplayName="Data Scraping" sap:VirtualizedContainerService.HintSize="476,436" sap2010:WorkflowViewState.IdRef="Sequence_21">
-                <Sequence.Variables>
-                  <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="ExtractDataTable" />
-                </Sequence.Variables>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'SportsNew Page'" sap:VirtualizedContainerService.HintSize="434,344" sap2010:WorkflowViewState.IdRef="BrowserScope_6" InformativeScreenshot="661f880f4d762a704e4a43948654cb8d" Selector="&lt;html app='chrome.exe' title='Sports News - Breaking News &amp;amp; Top Stories - NBC News' /&gt;">
-                  <ui:BrowserScope.Body>
-                    <ActivityAction x:TypeArguments="x:Object">
-                      <ActivityAction.Argument>
-                        <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                      </ActivityAction.Argument>
-                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,198" sap2010:WorkflowViewState.IdRef="Sequence_20">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[nbcData]" DisplayName="Extract Structured Data 'DIV'" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='2:' attr='text'&gt;&lt;webctrl tag='div' class='col-sm-6 col-md-8 col-lg-9' idx='1'/&gt;&lt;webctrl tag='div' class='row' idx='1'/&gt;&lt;webctrl tag='div' class='col-sm-12 col-md-12 col-lg-4' idx='1'/&gt;&lt;webctrl tag='div' class='row-md-lg' idx='1'/&gt;&lt;webctrl tag='div' class='col-md-lg-6'/&gt;&lt;webctrl tag='div' class='story-link story-link_default story-link_default-height '/&gt;&lt;webctrl tag='a' idx='1'/&gt;&lt;webctrl tag='h3' class='item-heading item-heading_md' idx='1'/&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ExtractData_6" MaxNumberOfResults="2" SimulateClick="True">
-                          <ui:ExtractData.Target>
-                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2d1176ee-2ef5-4588-bcdb-c411bf280fcf" InformativeScreenshot="b4e5071b51f8a87cb3e4b4896689166a" Selector="&lt;webctrl css-selector='body&amp;gt;main&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' parentid='top-stories-section' tag='DIV' /&gt;" WaitForReady="COMPLETE">
-                              <ui:Target.TimeoutMS>
-                                <InArgument x:TypeArguments="x:Int32" />
-                              </ui:Target.TimeoutMS>
-                            </ui:Target>
-                          </ui:ExtractData.Target>
-                        </ui:ExtractData>
-                      </Sequence>
-                    </ActivityAction>
-                  </ui:BrowserScope.Body>
-                </ui:BrowserScope>
-              </Sequence>
-              <ui:CloseTab Browser="{x:Null}" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="476,22" sap2010:WorkflowViewState.IdRef="CloseTab_3" />
+              <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'SportsNew Page'" sap:VirtualizedContainerService.HintSize="434,344" sap2010:WorkflowViewState.IdRef="BrowserScope_6" InformativeScreenshot="661f880f4d762a704e4a43948654cb8d" Selector="&lt;html app='chrome.exe' title='Sports News - Breaking News &amp;amp; Top Stories - NBC News' /&gt;">
+                <ui:BrowserScope.Body>
+                  <ActivityAction x:TypeArguments="x:Object">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,198" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[NBCData]" DisplayName="Extract Structured Data 'DIV'" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='2:' attr='text'&gt;&lt;webctrl tag='div' class='col-sm-6 col-md-8 col-lg-9' idx='1'/&gt;&lt;webctrl tag='div' class='row' idx='1'/&gt;&lt;webctrl tag='div' class='col-sm-12 col-md-12 col-lg-4' idx='1'/&gt;&lt;webctrl tag='div' class='row-md-lg' idx='1'/&gt;&lt;webctrl tag='div' class='col-md-lg-6'/&gt;&lt;webctrl tag='div' class='story-link story-link_default story-link_default-height '/&gt;&lt;webctrl tag='a' idx='1'/&gt;&lt;webctrl tag='h3' class='item-heading item-heading_md' idx='1'/&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ExtractData_6" MaxNumberOfResults="2" SimulateClick="True">
+                        <ui:ExtractData.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2d1176ee-2ef5-4588-bcdb-c411bf280fcf" InformativeScreenshot="b4e5071b51f8a87cb3e4b4896689166a" Selector="&lt;webctrl css-selector='body&amp;gt;main&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' parentid='top-stories-section' tag='DIV' /&gt;" WaitForReady="COMPLETE">
+                            <ui:Target.TimeoutMS>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:Target.TimeoutMS>
+                          </ui:Target>
+                        </ui:ExtractData.Target>
+                      </ui:ExtractData>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:BrowserScope.Body>
+              </ui:BrowserScope>
+              <ui:CloseTab Browser="{x:Null}" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="434,22" sap2010:WorkflowViewState.IdRef="CloseTab_3" />
             </Sequence>
           </ActivityAction>
         </ui:OpenBrowser.Body>
@@ -239,32 +226,24 @@
           </ActivityAction>
         </ui:OpenBrowser.Body>
       </ui:OpenBrowser>
-      <ui:OutputDataTable DataTable="[OnThisDayData]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="552,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="[OnThisDay]">
+      <ui:OutputDataTable DataTable="[OnThisDaySportData]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="552,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="[OnThisDay]">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:OutputDataTable>
-      <ui:OutputDataTable DataTable="[CNNData]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="552,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_2" Text="[CNN]" />
-      <ui:OutputDataTable DataTable="[nbcData]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="552,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_3" Text="[nbc]" />
-      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="552,62" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[OnThisDay.Trim.Replace(&quot;&quot;&quot;&quot;, &quot;&quot;)]">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </WriteLine>
-      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="552,62" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[nbc]" />
-      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="552,62" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[CNN]" />
+      <ui:OutputDataTable DataTable="[CNNData]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="552,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_2" Text="[CNNSportOutput]" />
+      <ui:OutputDataTable DataTable="[NBCData]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="552,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_3" Text="[NBCOutput]" />
     </Sequence>
-    <Sequence DisplayName="Film" sap:VirtualizedContainerService.HintSize="613,2740" sap2010:WorkflowViewState.IdRef="Sequence_31">
+    <Sequence DisplayName="Film" sap:VirtualizedContainerService.HintSize="434,66" sap2010:WorkflowViewState.IdRef="Sequence_31">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="552,692" sap2010:WorkflowViewState.IdRef="OpenBrowser_4" Url="https://www.empireonline.com/movies/news/">
+      <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="552,691" sap2010:WorkflowViewState.IdRef="OpenBrowser_4" Url="https://www.empireonline.com/movies/news/">
         <ui:OpenBrowser.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
@@ -313,7 +292,7 @@
           </ActivityAction>
         </ui:OpenBrowser.Body>
       </ui:OpenBrowser>
-      <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="552,692" sap2010:WorkflowViewState.IdRef="OpenBrowser_5" Url="https://www.onthisday.com/film-tv/">
+      <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="552,691" sap2010:WorkflowViewState.IdRef="OpenBrowser_5" Url="https://www.onthisday.com/film-tv/">
         <ui:OpenBrowser.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
@@ -326,9 +305,6 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <Sequence DisplayName="Data Scraping" sap:VirtualizedContainerService.HintSize="476,498" sap2010:WorkflowViewState.IdRef="Sequence_26">
-                <Sequence.Variables>
-                  <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="ExtractDataTable" />
-                </Sequence.Variables>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -346,7 +322,7 @@
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[OnThisDayFilm]" DisplayName="Extract Structured Data 'MAIN'" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='2:' attr='text'&gt;&lt;webctrl tag='div' class='section no-padding-top no-padding-bottom' idx='1'/&gt;&lt;webctrl tag='div' class='wrapper' idx='1'/&gt;&lt;webctrl tag='ul' class='event-list event-list--with-advert'/&gt;&lt;webctrl tag='li' class='event'/&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ExtractData_8" MaxNumberOfResults="2" SimulateClick="True">
+                        <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[OnThisDayFilmData]" DisplayName="Extract Structured Data 'MAIN'" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='2:' attr='text'&gt;&lt;webctrl tag='div' class='section no-padding-top no-padding-bottom' idx='1'/&gt;&lt;webctrl tag='div' class='wrapper' idx='1'/&gt;&lt;webctrl tag='ul' class='event-list event-list--with-advert'/&gt;&lt;webctrl tag='li' class='event'/&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ExtractData_8" MaxNumberOfResults="2" SimulateClick="True">
                           <ui:ExtractData.Target>
                             <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="681930e3-b37a-4fc4-96d6-24d3a1a97a8d" InformativeScreenshot="a77e974ce1763f43567394c9afaa15c8" Selector="&lt;webctrl tag='MAIN' /&gt;" WaitForReady="COMPLETE">
                               <ui:Target.TimeoutMS>
@@ -365,22 +341,19 @@
           </ActivityAction>
         </ui:OpenBrowser.Body>
       </ui:OpenBrowser>
-      <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="552,1184" sap2010:WorkflowViewState.IdRef="OpenBrowser_6" Url="https://www.imdb.com/news/movie">
+      <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="552,877" sap2010:WorkflowViewState.IdRef="OpenBrowser_6" Url="https://www.imdb.com/news/movie">
         <ui:OpenBrowser.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="518,1082" sap2010:WorkflowViewState.IdRef="Sequence_30">
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="518,776" sap2010:WorkflowViewState.IdRef="Sequence_30">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <Sequence DisplayName="Data Scraping" sap:VirtualizedContainerService.HintSize="476,498" sap2010:WorkflowViewState.IdRef="Sequence_29">
-                <Sequence.Variables>
-                  <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="ExtractDataTable" />
-                </Sequence.Variables>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -398,7 +371,7 @@
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[IMDB]" DisplayName="Extract Structured Data 'SECTION  news-article-l...'" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='3:' attr='text'&gt;&lt;webctrl tag='article' class='ipl-zebra-list__item news-article'/&gt;&lt;webctrl tag='header' class='news-article__header' idx='1'/&gt;&lt;webctrl tag='h2' class='news-article__title' idx='1'/&gt;&lt;webctrl tag='a' idx='1'/&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ExtractData_9" MaxNumberOfResults="2" SimulateClick="True">
+                        <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[IMDBData]" DisplayName="Extract Structured Data 'SECTION  news-article-l...'" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='3:' attr='text'&gt;&lt;webctrl tag='article' class='ipl-zebra-list__item news-article'/&gt;&lt;webctrl tag='header' class='news-article__header' idx='1'/&gt;&lt;webctrl tag='h2' class='news-article__title' idx='1'/&gt;&lt;webctrl tag='a' idx='1'/&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ExtractData_9" MaxNumberOfResults="2" SimulateClick="True">
                           <ui:ExtractData.Target>
                             <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c8d53e78-2c3c-47c0-8202-114e202f8008" InformativeScreenshot="72970017e411358bb1661eeca736f306" Selector="&lt;webctrl id='news-article-list' tag='SECTION' /&gt;" WaitForReady="COMPLETE">
                               <ui:Target.TimeoutMS>
@@ -413,24 +386,28 @@
                   </ui:BrowserScope.Body>
                 </ui:BrowserScope>
               </Sequence>
-              <ui:OutputDataTable DataTable="[EmpireData]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="476,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_4" Text="[Empire]" />
-              <ui:OutputDataTable DataTable="[OnThisDayFilm]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="476,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_5" Text="[OnThisDayFilmPrint]" />
-              <ui:OutputDataTable DataTable="[IMDB]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="476,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_6" Text="[IMDBprint]" />
-              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="476,62" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[Empire]" />
-              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="476,62" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="[OnThisDayFilmPrint.Replace(&quot;&quot;&quot;&quot;, &quot;&quot;)]" />
-              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="476,62" sap2010:WorkflowViewState.IdRef="WriteLine_6" Text="[IMDBprint]" />
+              <ui:OutputDataTable DataTable="[EmpireData]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="476,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_4" Text="[EmpireOutput]" />
+              <ui:OutputDataTable DataTable="[OnThisDayFilmData]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="476,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_5" Text="[OnThisDayFilmOutput]" />
+              <ui:OutputDataTable DataTable="[IMDBData]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="476,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_6" Text="[IMDBOutput]" />
             </Sequence>
           </ActivityAction>
         </ui:OpenBrowser.Body>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
       </ui:OpenBrowser>
     </Sequence>
-    <Sequence DisplayName="Tech" sap:VirtualizedContainerService.HintSize="613,2740" sap2010:WorkflowViewState.IdRef="Sequence_41">
+    <Sequence DisplayName="Tech" sap:VirtualizedContainerService.HintSize="434,66" sap2010:WorkflowViewState.IdRef="Sequence_41">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="552,692" sap2010:WorkflowViewState.IdRef="OpenBrowser_7" Url="https://www.theverge.com/tech">
+      <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="552,691" sap2010:WorkflowViewState.IdRef="OpenBrowser_7" Url="https://www.theverge.com/tech">
         <ui:OpenBrowser.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
@@ -479,7 +456,7 @@
           </ActivityAction>
         </ui:OpenBrowser.Body>
       </ui:OpenBrowser>
-      <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="552,692" sap2010:WorkflowViewState.IdRef="OpenBrowser_8" Url="https://www.reddit.com/r/technology/">
+      <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="552,691" sap2010:WorkflowViewState.IdRef="OpenBrowser_8" Url="https://www.reddit.com/r/technology/">
         <ui:OpenBrowser.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
@@ -528,7 +505,7 @@
           </ActivityAction>
         </ui:OpenBrowser.Body>
       </ui:OpenBrowser>
-      <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="552,692" sap2010:WorkflowViewState.IdRef="OpenBrowser_9" Url="https://edition.cnn.com/business/tech">
+      <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="552,691" sap2010:WorkflowViewState.IdRef="OpenBrowser_9" Url="https://edition.cnn.com/business/tech">
         <ui:OpenBrowser.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
@@ -558,7 +535,7 @@
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[CCNTech]" DisplayName="Extract Structured Data 'SECTION  tech-zone-2'" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='3:' attr='text'&gt;&lt;webctrl tag='div' class='l-container zn__background--content-relative' idx='1'/&gt;&lt;webctrl tag='div' class='zn__containers' idx='1'/&gt;&lt;webctrl tag='div' class='column zn__column--idx-0' idx='1'/&gt;&lt;webctrl tag='ul' class='cn cn-list-xs cn--idx-0 cn-coverageContainer_A4A0AEAB-ED9E-D7AA-ADE4-59F499294F14 cn--expandable cn--collapsed' idx='1'/&gt;&lt;webctrl tag='li'/&gt;&lt;webctrl tag='article'/&gt;&lt;webctrl tag='div' class='cd__wrapper' idx='1'/&gt;&lt;webctrl tag='div' class='cd__content' idx='1'/&gt;&lt;webctrl tag='h3' class='cd__headline' idx='1'/&gt;&lt;webctrl tag='a' idx='1'/&gt;&lt;webctrl tag='span' class='cd__headline-text' idx='1'/&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ExtractData_12" MaxNumberOfResults="2" SimulateClick="True">
+                        <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[CNNTech]" DisplayName="Extract Structured Data 'SECTION  tech-zone-2'" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='3:' attr='text'&gt;&lt;webctrl tag='div' class='l-container zn__background--content-relative' idx='1'/&gt;&lt;webctrl tag='div' class='zn__containers' idx='1'/&gt;&lt;webctrl tag='div' class='column zn__column--idx-0' idx='1'/&gt;&lt;webctrl tag='ul' class='cn cn-list-xs cn--idx-0 cn-coverageContainer_A4A0AEAB-ED9E-D7AA-ADE4-59F499294F14 cn--expandable cn--collapsed' idx='1'/&gt;&lt;webctrl tag='li'/&gt;&lt;webctrl tag='article'/&gt;&lt;webctrl tag='div' class='cd__wrapper' idx='1'/&gt;&lt;webctrl tag='div' class='cd__content' idx='1'/&gt;&lt;webctrl tag='h3' class='cd__headline' idx='1'/&gt;&lt;webctrl tag='a' idx='1'/&gt;&lt;webctrl tag='span' class='cd__headline-text' idx='1'/&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ExtractData_12" MaxNumberOfResults="2" SimulateClick="True">
                           <ui:ExtractData.Target>
                             <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="48a94986-59de-4d66-98b7-6baf66d132de" InformativeScreenshot="16bead46a03724425dc9f46f41c37074" Selector="&lt;webctrl id='tech-zone-2' tag='SECTION' /&gt;" WaitForReady="COMPLETE">
                               <ui:Target.TimeoutMS>
@@ -578,13 +555,10 @@
         </ui:OpenBrowser.Body>
       </ui:OpenBrowser>
       <ui:OutputDataTable DataTable="[theVergeData]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="552,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_7" Text="[theVergePrint]" />
-      <ui:OutputDataTable DataTable="[RedditTechData]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="552,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_8" Text="[RedditPrint]" />
-      <ui:OutputDataTable DataTable="[CCNTech]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="552,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_9" Text="[CNNTechPrint]" />
-      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="552,62" sap2010:WorkflowViewState.IdRef="WriteLine_7" Text="[theVergePrint]" />
-      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="552,62" sap2010:WorkflowViewState.IdRef="WriteLine_8" Text="[RedditPrint]" />
-      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="552,62" sap2010:WorkflowViewState.IdRef="WriteLine_9" Text="[CNNTechPrint]" />
+      <ui:OutputDataTable DataTable="[RedditTechData]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="552,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_8" Text="[RedditOutput]" />
+      <ui:OutputDataTable DataTable="[CNNTech]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="552,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_9" Text="[CNNTechPrint]" />
     </Sequence>
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="613,260" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" WorkbookPath="C:\Users\zeo\Desktop\mergedtabletest.xlsx">
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="434,260" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" WorkbookPath="C:\Users\zeo\Desktop\zeouserdatabase.xlsx">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
@@ -606,70 +580,90 @@
           </Sequence>
         </ActivityAction>
       </ui:ExcelApplicationScope.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
     </ui:ExcelApplicationScope>
-    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[ExcelDatabase]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="613,1488" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[ExcelDatabase]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="655,1668" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="563,1339" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence sap:VirtualizedContainerService.HintSize="605,1520" sap2010:WorkflowViewState.IdRef="Sequence_56">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[row.item(&quot;Content Preference&quot;).toString.equals(&quot;Tech&quot;)]" sap:VirtualizedContainerService.HintSize="521,389" sap2010:WorkflowViewState.IdRef="If_1">
-              <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="376,239" sap2010:WorkflowViewState.IdRef="Sequence_48">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Body="[theVergePrint + RedditPrint + CNNTechPrint]" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,147" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" IsBodyHtml="False" IsDraft="False" Subject="Zeo Application Content" To="[row.item(&quot;Email&quot;).ToString]">
-                    <ui:SendOutlookMail.Files>
-                      <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
-                    </ui:SendOutlookMail.Files>
-                  </ui:SendOutlookMail>
-                </Sequence>
-              </If.Then>
-            </If>
-            <If Condition="[row.item(&quot;Content Preference&quot;).toString.equals(&quot;Sport&quot;)]" sap:VirtualizedContainerService.HintSize="521,389" sap2010:WorkflowViewState.IdRef="If_3">
-              <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="376,239" sap2010:WorkflowViewState.IdRef="Sequence_51">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Body="[OnThisDay + nbc + CNN]" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,147" sap2010:WorkflowViewState.IdRef="SendOutlookMail_3" IsBodyHtml="False" IsDraft="False" Subject="Zeo Application Content" To="[row.item(&quot;Email&quot;).ToString]">
-                    <ui:SendOutlookMail.Files>
-                      <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
-                    </ui:SendOutlookMail.Files>
-                  </ui:SendOutlookMail>
-                </Sequence>
-              </If.Then>
-            </If>
-            <If Condition="[row.item(&quot;Content Preference&quot;).toString.equals(&quot;Film&quot;)]" sap:VirtualizedContainerService.HintSize="521,389" sap2010:WorkflowViewState.IdRef="If_4">
-              <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="376,239" sap2010:WorkflowViewState.IdRef="Sequence_52">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Body="[Empire + OnThisDayFilmPrint + IMDBprint]" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,147" sap2010:WorkflowViewState.IdRef="SendOutlookMail_4" IsBodyHtml="False" IsDraft="False" Subject="Zeo Application Content" To="[row.item(&quot;Email&quot;).ToString]">
-                    <ui:SendOutlookMail.Files>
-                      <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
-                    </ui:SendOutlookMail.Files>
-                  </ui:SendOutlookMail>
-                </Sequence>
-              </If.Then>
-            </If>
+            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="563,61" sap2010:WorkflowViewState.IdRef="WriteLine_10" Text="[&quot;Hey &quot; + row.item(&quot;First Name&quot;).ToString + &quot;!&quot; + Environment.NewLine + Environment.NewLine + &quot;Here is your content for today  :)&quot; + Environment.NewLine + Environment.NewLine + OnThisDay.Replace(&quot;&quot;&quot;&quot;, &quot;&quot;).TrimStart + NBCOutput + CNNSportOutput.Replace(&quot;&quot;&quot;&quot;, &quot;&quot;).TrimStart]" />
+            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="563,1327" sap2010:WorkflowViewState.IdRef="Sequence_3">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If Condition="[row.item(&quot;Content Preference&quot;).toString.equals(&quot;Techo&quot;)]" sap:VirtualizedContainerService.HintSize="521,385" sap2010:WorkflowViewState.IdRef="If_1">
+                <If.Then>
+                  <Sequence sap:VirtualizedContainerService.HintSize="376,237" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Body="[&quot;Hey &quot; + row.item(&quot;First Name&quot;).ToString + &quot; &quot; + row.item(&quot;Last Name&quot;).ToString + &quot;!&quot; + Environment.NewLine + Environment.NewLine + &quot;Here is your content for today  :)&quot; + Environment.NewLine + Environment.NewLine + theVergePrint.Replace(&quot;&quot;&quot;&quot;, &quot;&quot;) + RedditOutput.Replace(&quot;&quot;&quot;&quot;, &quot;&quot;) + CNNTechPrint.Replace(&quot;&quot;&quot;&quot;, &quot;&quot;)]" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" IsBodyHtml="False" IsDraft="False" Subject="Zeo Application Content - Tech" To="[row.item(&quot;Email&quot;).ToString]">
+                      <ui:SendOutlookMail.Files>
+                        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                      </ui:SendOutlookMail.Files>
+                    </ui:SendOutlookMail>
+                  </Sequence>
+                </If.Then>
+              </If>
+              <If Condition="[row.item(&quot;Content Preference&quot;).toString.equals(&quot;Sporto&quot;)]" sap:VirtualizedContainerService.HintSize="521,385" sap2010:WorkflowViewState.IdRef="If_3">
+                <If.Then>
+                  <Sequence sap:VirtualizedContainerService.HintSize="376,237" sap2010:WorkflowViewState.IdRef="Sequence_51">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Body="[&quot;Hey &quot; + row.item(&quot;First Name&quot;).ToString + &quot; &quot; + row.item(&quot;Last Name&quot;).ToString + &quot;!&quot; + Environment.NewLine + Environment.NewLine + &quot;Here is your content for today  :)&quot; + Environment.NewLine + Environment.NewLine + OnThisDay.Replace(&quot;&quot;&quot;&quot;, &quot;&quot;).TrimStart + NBCOutput.Replace(&quot;&quot;&quot;&quot;, &quot;&quot;) + CNNSportOutput.Replace(&quot;&quot;&quot;&quot;, &quot;&quot;).TrimStart]" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendOutlookMail_3" IsBodyHtml="False" IsDraft="False" Subject="Zeo Application Content - Sport" To="[row.item(&quot;Email&quot;).ToString]">
+                      <ui:SendOutlookMail.Files>
+                        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                      </ui:SendOutlookMail.Files>
+                    </ui:SendOutlookMail>
+                  </Sequence>
+                </If.Then>
+              </If>
+              <If Condition="[row.item(&quot;Content Preference&quot;).toString.equals(&quot;Filmo&quot;)]" sap:VirtualizedContainerService.HintSize="521,385" sap2010:WorkflowViewState.IdRef="If_4">
+                <If.Then>
+                  <Sequence sap:VirtualizedContainerService.HintSize="376,237" sap2010:WorkflowViewState.IdRef="Sequence_52">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Body="[&quot;Hey &quot; + row.item(&quot;First Name&quot;).ToString + &quot; &quot; + row.item(&quot;Last Name&quot;).ToString + &quot;!&quot; + Environment.NewLine + Environment.NewLine + &quot;Here is your content for today  :)&quot; + Environment.NewLine + Environment.NewLine + EmpireOutput.Replace(&quot;&quot;&quot;&quot;, &quot;&quot;) + OnThisDayFilmOutput.Replace(&quot;&quot;&quot;&quot;, &quot;&quot;).TrimStart + IMDBOutput.Replace(&quot;&quot;&quot;&quot;, &quot;&quot;).TrimStart]" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendOutlookMail_4" IsBodyHtml="False" IsDraft="False" Subject="Zeo Application Content - Film" To="[row.item(&quot;Email&quot;).ToString]">
+                      <ui:SendOutlookMail.Files>
+                        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                      </ui:SendOutlookMail.Files>
+                    </ui:SendOutlookMail>
+                  </Sequence>
+                </If.Then>
+              </If>
+            </Sequence>
           </Sequence>
         </ActivityAction>
       </ui:ForEachRow.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
     </ui:ForEachRow>
   </Sequence>
 </Activity>
