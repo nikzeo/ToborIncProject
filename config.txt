@@ -1,0 +1,38 @@
+[
+
+{
+
+"databasefirstname" :"https://bestrandoms.com/random-names",
+"databaselastname" :"https://bestrandoms.com/random-last-names",
+"databaseextra" :"https://www.bestrandoms.com/random-address-in-uk",
+"databaselocation" :"C:\\Users\\zeo\\Desktop\\zeouserdatabase.xlsx"
+
+},
+
+{
+
+"sport1": "https://www.onthisday.com/sport/",
+"sport2": "https://www.nbcnews.com/news/sports/",
+"sport3": "https://edition.cnn.com/sport"
+
+},
+
+{
+
+"film1": "https://www.empireonline.com/movies/news/",
+"film2": "https://www.onthisday.com/film-tv/",
+"film3": "https://www.imdb.com/news/movie"
+
+},
+
+{
+
+"tech1": "https://www.theverge.com/tech",
+"tech2": "https://www.reddit.com/r/technology/",
+"tech3": "https://edition.cnn.com/business/tech"
+
+}
+
+
+
+]
